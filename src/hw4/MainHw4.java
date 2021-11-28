@@ -48,7 +48,7 @@ public class MainHw4 {
     }
 
 
-    public static void initMap() {
+    public static void initMap() {    //метод инициализирующий карту  с точками
         map = new char[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -58,13 +58,13 @@ public class MainHw4 {
     }
 
     public static void printMap() {
-        System.out.print("  ");
+        System.out.print("  ");          //пробелы обозначили
         for (int i = 1; i <= SIZE; i++) {
-            System.out.print(i + " ");
+            System.out.print(i + " ");   //распечатаны номера столбов
         }
-        System.out.println();
-        for (int i = 0; i < SIZE; i++) {
-            System.out.print(i + 1 + " ");
+        System.out.println();                 //перенос строки
+        for (int i = 0; i < SIZE; i++) {      //метод распечатывающий карту с точками
+            System.out.print(i + 1 + " ");    //распечатаны номера строк
             for (int j = 0; j < SIZE; j++) {
                 System.out.printf("%c ", map[i][j]);
             }
@@ -72,24 +72,24 @@ public class MainHw4 {
         }
     }
 
-    public static void humanTurn() {
+    public static void humanTurn() {     //метод означающий ход человека
         int x, y;
         do {
             System.out.println("input X,Y");
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
         } while (!isCellValid(y, x));
-        map[y][x] = DOT_X;
+        map[y][x] = DOT_X;             //y---номер строки, х--номер столбца
     }
 
-    public static boolean isCellValid(int y, int x) {
+    public static boolean isCellValid(int y, int x) {   //метод проверяющий правильно ли сделан ход
         if (y < 0 || x < 0 || y >= SIZE || x >= SIZE) {
             return false;
         }
         return map[y][x] == DOT_EMPTY;
     }
 
-    public static void aiTurn() {
+    public static void aiTurn() {          //метод означающий ход компьютера
         int x, y;
         do {
             y = random.nextInt(SIZE);
@@ -98,7 +98,7 @@ public class MainHw4 {
         map[y][x] = DOT_O;
     }
 
-    public static boolean isFull() {
+    public static boolean isFull() {      //метод проверяющий заполнено ли поле полностью
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (map[i][j] == DOT_EMPTY) {
@@ -109,7 +109,7 @@ public class MainHw4 {
         return true;
     }
 
-    public static boolean checkWin(char c) {
+    public static boolean checkWin(char c) {            //метод проверки победы (8 возможных вариантов УПРОСТИТЬ!!!!)
         if (map[0][0] == c && map[0][1] == c && map[0][2] == c) {
             return true;
         }
