@@ -109,7 +109,7 @@ public class MainHw4 {
         return true;
     }
 
-    public static boolean checkWin(char c) {            //метод проверки победы (8 возможных вариантов УПРОСТИТЬ!!!!)
+    /*public static boolean checkWin(char c) {            //метод проверки победы (8 возможных вариантов УПРОСТИТЬ!!!!)
         if (map[0][0] == c && map[0][1] == c && map[0][2] == c) {
             return true;
         }
@@ -138,9 +138,31 @@ public class MainHw4 {
         }
 
         return false;
+    }*/
+    public static boolean checkWin(char c) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (map[i][j] == DOT_X || map[i][j] == DOT_O) {
+                    return true;
+                } else if (map[i] == map[j]) {
+                    return map[i][j] == c;
+
+                } else if (i + j == SIZE - 1) {
+                    return map[i][j] == c;
+
+                }
+            }
+
+        }return true;
+
     }
 
 }
+
+
+
+
+
 
 
 
