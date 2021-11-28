@@ -21,7 +21,6 @@ public class MainHw4 {
     public static void main(String[] args) {
         initMap();
         printMap();
-
         while (true) {
             humanTurn();
             printMap();
@@ -108,7 +107,6 @@ public class MainHw4 {
         }
         return true;
     }
-
     /*public static boolean checkWin(char c) {            //метод проверки победы (8 возможных вариантов УПРОСТИТЬ!!!!)
         if (map[0][0] == c && map[0][1] == c && map[0][2] == c) {
             return true;
@@ -138,11 +136,12 @@ public class MainHw4 {
         }
 
         return false;
-    }*/
+    }
+}*/
     public static boolean checkWin(char c) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (map[i][j] == DOT_X || map[i][j] == DOT_O) {
+                if (map[i][j] == c) {
                     return true;
                 } else if (map[i] == map[j]) {
                     return map[i][j] == c;
@@ -158,11 +157,3 @@ public class MainHw4 {
     }
 
 }
-
-
-
-
-
-
-
-
