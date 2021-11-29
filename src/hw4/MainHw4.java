@@ -36,7 +36,7 @@ public class MainHw4 {
             aiTurn();
             printMap();
             if (checkWin(DOT_O)) {
-                System.out.println("Копьютер победил.");
+                System.out.println("Компьютер победил.");
                 break;
             }
             if (isFull()) {
@@ -107,6 +107,7 @@ public class MainHw4 {
         }
         return true;
     }
+
     /*public static boolean checkWin(char c) {            //метод проверки победы (8 возможных вариантов УПРОСТИТЬ!!!!)
         if (map[0][0] == c && map[0][1] == c && map[0][2] == c) {
             return true;
@@ -139,21 +140,43 @@ public class MainHw4 {
     }
 }*/
     public static boolean checkWin(char c) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (map[i][j] == c) {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                int a = 0, b = 0, d = 0, e = 0;
+                if (map[i][2 - j] == c) {//правая диагональ
+                    a++;
+                }
+                if (a == SIZE) {
                     return true;
-                } else if (map[i] == map[j]) {
-                    return map[i][j] == c;
+                } else if (map[i][j] == c) {//левая диагональ
+                    b++;
+                }
+                if (b == SIZE) {
+                    return true;
+                } else if (map[0][j] == c || map[1][j] == c || map[2][j] == c) {//столбцы меняются
+                    d++;
+                }
+                if (d == map.length) {
+                    return true;
+                } else if (map[i][0] == c || map[i][1] == c || map[i][2] == c) {   //строки меняются
+                    e++;
+                    if (e == map[i].length) {
+                        return true;
 
-                } else if (i + j == SIZE - 1) {
-                    return map[i][j] == c;
-
+                    }
                 }
             }
 
-        }return true;
-
+            return false;
+        }
+        return false;
     }
-
 }
+
+
+
+
+
+
+
+
