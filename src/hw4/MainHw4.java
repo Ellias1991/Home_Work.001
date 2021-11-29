@@ -151,27 +151,23 @@ public class MainHw4 {
                 } else if (map[i][j] == c) {//левая диагональ
                     b++;
                 }
-                if (b == SIZE) {
+                if (b == map[i][j]) {
                     return true;
-                } else if (map[0][j] == c || map[1][j] == c || map[2][j] == c) {//столбцы меняются
-                    d++;
-                }
-                if (d == map.length) {
+                } else if (map[0][j] == c && map[1][j] == c && map[2][j] == c) {//столбцы меняются
+
                     return true;
-                } else if (map[i][0] == c || map[i][1] == c || map[i][2] == c) {   //строки меняются
-                    e++;
-                    if (e == map[i].length) {
+                } else if (map[i][0] == c && map[i][1] == c && map[i][2] == c) {   //строки меняются
+
                         return true;
 
                     }
                 }
             }
-
             return false;
         }
-        return false;
+
     }
-}
+
 
 
 
