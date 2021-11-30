@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class MainHw4 {
 
     static final int SIZE = 3;
-//    static final int DOTS_TO_WIN = 3;
+    static final int DOTS_TO_WIN = 3;
 
     static final char DOT_X = 'X';
     static final char DOT_O = 'O';
@@ -24,7 +24,7 @@ public class MainHw4 {
         while (true) {
             humanTurn();
             printMap();
-            if (checkWin(DOT_X)) {
+            if (checkWin(DOT_X, DOTS_TO_WIN)) {
                 System.out.println("Поздравляем! Вы выиграли!");
                 break;
             }
@@ -35,7 +35,7 @@ public class MainHw4 {
 
             aiTurn();
             printMap();
-            if (checkWin(DOT_O)) {
+            if (checkWin(DOT_O, DOTS_TO_WIN)) {
                 System.out.println("Компьютер победил.");
                 break;
             }
@@ -108,68 +108,32 @@ public class MainHw4 {
         return true;
     }
 
-    /*public static boolean checkWin(char c) {            //метод проверки победы (8 возможных вариантов УПРОСТИТЬ!!!!)
-        if (map[0][0] == c && map[0][1] == c && map[0][2] == c) {
-            return true;
-        }
-        if (map[1][0] == c && map[1][1] == c && map[1][2] == c) {
-            return true;
-        }
-        if (map[2][0] == c && map[2][1] == c && map[2][2] == c) {
-            return true;
-        }
-
-        if (map[0][0] == c && map[1][0] == c && map[2][0] == c) {
-            return true;
-        }
-        if (map[0][1] == c && map[1][1] == c && map[2][1] == c) {
-            return true;
-        }
-        if (map[0][2] == c && map[1][2] == c && map[2][2] == c) {
-            return true;
-        }
-
-        if (map[0][0] == c && map[1][1] == c && map[2][2] == c) {
-            return true;
-        }
-        if (map[0][2] == c && map[1][1] == c && map[2][0] == c) {
-            return true;
-        }
-
-        return false;
-    }
-}*/
-    public static boolean checkWin(char c) {
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                int a = 0, b = 0, d = 0, e = 0;
-                if (map[i][2 - j] == c) {//правая диагональ
-                    a++;
-                }
-                if (a == SIZE) {
-                    return true;
-                } else if (map[i][j] == c) {//левая диагональ
-                    b++;
-                }
-                if (b == map[i][j]) {
-                    return true;
-                } else if (map[0][j] == c && map[1][j] == c && map[2][j] == c) {//столбцы меняются
-
-                    return true;
-                } else if (map[i][0] == c && map[i][1] == c && map[i][2] == c) {   //строки меняются
-
-                        return true;
-
-                    }
-                }
-            }
+    public static boolean checkingLines(int y, int x, int vy, int vx, char c, int Winline) {
+        if (x + vx * (Winline - 1) > SIZE - 1 || (y + vy * (Winline - 1) > SIZE - 1 || y + vy * (Winline - 1) < 0)) {
             return false;
         }
+        for (int i = 0; i < Winline; i++) {
+            if (map[y + i * vy][x + i * vx] != c) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkWin(char c, int Winline) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (checkingLines(i, j, 0, 1, c, Winline)) return true;
+                if (checkingLines(i, j, 1, 0, c, Winline)) return true;
+                if (checkingLines(i, j, 1, 1, c, Winline)) return true;
+                if (checkingLines(i, j, -1, 1, c, Winline)) return true;
+            }
+        }
+        return false;
 
     }
 
-
-
+}
 
 
 
