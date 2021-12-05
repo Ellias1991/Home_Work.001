@@ -5,17 +5,28 @@ public class Dog extends Animal {
         super(name, color, age);
 
         run(501);
+        swim(9);
     }
 
     public void run(int run) {
-        if (run < maxDogRun) {
-            System.out.println(name + " runs " +  run  + " метров");
+        if (run <= maxDogRun) {
+            System.out.println(name + " пробежал " +  run  + " метров");
         } else {
             System.out.println(name + " не пробежит столько");
 
         }
 
     }
+    public void swim(int swim) {
+        if (swim <= maxDogSwim) {
+            System.out.println(name + " проплыл " +  swim  + " метров");
+        } else {
+            System.out.println(name + " не проплывет столько");
+
+        }
+
+    }
+
 
     public void voice() {
         System.out.println(name + " gaav");

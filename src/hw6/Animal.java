@@ -6,8 +6,8 @@ public class Animal {
     protected int age;
     int maxCatRun = 200;
     int maxDogRun = 500;
-    // int maxCatSwim = 0;
-    //  int maxDogSwim = 10;
+    int maxCatSwim = 0;
+    int maxDogSwim = 10;
 
     public Animal(String name, String color, int age) {
         this.name = name;
@@ -17,6 +17,9 @@ public class Animal {
 
     public void run() {
         System.out.println(name + " runs");
+    }
+    public void swim() {
+        System.out.println(name + " swims");
     }
 
     public void voice() {
