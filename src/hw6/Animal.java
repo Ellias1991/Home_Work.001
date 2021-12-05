@@ -4,10 +4,12 @@ public class Animal {
     protected String name;
     protected String color;
     protected int age;
-    int maxCatRun = 200;
-    int maxDogRun = 500;
-    int maxCatSwim = 0;
-    int maxDogSwim = 10;
+    protected int maxCatRun = 200;
+    protected int maxDogRun = 500;
+    protected int maxCatSwim = 0;
+    protected int maxDogSwim = 10;
+
+
 
     public Animal(String name, String color, int age) {
         this.name = name;

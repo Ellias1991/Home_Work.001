@@ -10,6 +10,7 @@ public class Main {
                 new Cat("Murzik", "black", 7),
                 new Dog("Sharik", "red", 8),
         };
+
         for (int i = 0; i < animals.length; i++) {
 
             animals[i].voice();

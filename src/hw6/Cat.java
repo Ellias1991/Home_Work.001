@@ -4,7 +4,7 @@ public class Cat extends Animal {
     public Cat(String name, String color, int age) {
         super(name, color, age);
 
-        run(199);
+        run(150);
         swim(5);
     }
 
